@@ -1,6 +1,9 @@
 .jumbotron {
-    margin-top: 300px !important;
+    margin-top: 200px !important;
     border-radius: 40px !important;
+    -webkit-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
 }
 
 .navbar {
@@ -13,4 +16,12 @@ a {
 
 li {
     margin-left: 15px;
+}
+
+.about-text {
+    margin-top: 70px;
+}
+
+.about-link {
+    color: #3284ff !important;
 }
