@@ -1,3 +1,16 @@
-p {
-    color: red;
+.jumbotron {
+    margin-top: 300px !important;
+    border-radius: 40px !important;
+}
+
+.navbar {
+    background-color: #404040 !important;
+}
+
+a {
+    color: #fff !important;
+}
+
+li {
+    margin-left: 15px;
 }
