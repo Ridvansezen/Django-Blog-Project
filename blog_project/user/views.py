@@ -1,14 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import RegisterForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from django.contrib import messages
 
 def registerUser(request):
 
-    form = RegisterForm()
-    context = {
-        "form": form,
-    }
+    
+        form = RegisterForm(request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
 
-    return render(request, "user/register.html", context)
+            newUser = User(username = username)
+            newUser.set_password(password)
+            newUser.save()
+            login(request, newUser)
+            messages.success(request,"Başarıyla kayıt oldunuz...")
+            
+            return redirect("index")
+        context = {
+            "form": form,
+        }
+        return render(request, "user/register.html", context)
 
 def loginUser(request):
     return render(request, "user/login.html")

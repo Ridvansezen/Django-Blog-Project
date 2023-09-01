@@ -46,3 +46,30 @@ li {
     font-style: italic;
 }
 
+.register-form-button {
+    background-color: #1b5ab9;
+    color: #fff;
+    border-width: 0px;
+    border-style: solid;
+    width: 130px;
+    padding: 7px;
+    border-radius: 30px;
+    -webkit-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    transition: 0.4s;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+.register-form-button:hover {
+    background-color: #1d5ec0;
+    opacity: 0.9;
+    scale: 1.1;
+}
+
+.messages {
+    margin-top: 30px !important;
+    margin-bottom: -50px !important;
+}
+
