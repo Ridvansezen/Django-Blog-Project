@@ -22,6 +22,27 @@ li {
     margin-top: 70px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.index-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.index-text-1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
 .about-link {
     color: #3284ff !important;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.about-text-1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
