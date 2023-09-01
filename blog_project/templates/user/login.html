@@ -4,5 +4,10 @@
 {% block body %}
     <h3 class="about-text">Giriş Yap</h3>
     <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="register-form-button">Giriş Yap</button>
+    </form>
 {% endblock body %}
     
