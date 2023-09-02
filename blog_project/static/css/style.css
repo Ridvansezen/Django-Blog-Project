@@ -60,6 +60,7 @@ li {
     transition: 0.4s;
     cursor: pointer;
     margin-top: 100px;
+    margin-left: 200px;
 }
 
 .register-form-button:hover {
