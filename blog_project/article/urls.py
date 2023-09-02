@@ -6,5 +6,7 @@ app_name = "article"
 
 # Article ile ilgili url'leri burada tanımlıyoruz.
 urlpatterns = [
-    path('create/', views.createArticle, name="createArticle" ),
+    path('dashboard/', views.dashboard, name="dashboard" ),
+    path('addarticle/', views.addArticle, name="addArticle" ),
+    path('article/<int:id>', views.detailArticle, name="detailArticle" ),
 ]

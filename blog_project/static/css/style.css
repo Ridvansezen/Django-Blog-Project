@@ -8,6 +8,7 @@
 
 .navbar {
     background-color: #404040 !important;
+    margin-bottom: 60px !important;
 }
 
 a {
@@ -88,4 +89,27 @@ li {
     cursor: pointer;
     margin-top: 7px;
     margin-bottom: -20px;
+}
+
+.dashboard-button {
+    border-radius: 40px !important;
+    background-color: #1b5ab9 !important;
+    transition: 0.4s !important;
+}
+
+.dashboard-button:hover {
+    background-color: #1d5ec0;
+    opacity: 0.9;
+    scale: 1.1;
+}
+
+.dashboard-button-delete {
+    border-radius: 40px !important;;
+    transition: 0.4s !important;
+    width: 50px;
+}
+
+.dashboard-button-delete:hover {
+    opacity: 0.9;
+    scale: 1.1;
 }
