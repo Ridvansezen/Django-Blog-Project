@@ -3,24 +3,30 @@ from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
+from django.db import IntegrityError
 
 def registerUser(request):
-        form = RegisterForm(request.POST or None)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
 
-            newUser = User(username = username)
+        try:
+
+            newUser = User(username=username)
             newUser.set_password(password)
             newUser.save()
             login(request, newUser)
-            messages.success(request,"Başarıyla kayıt oldunuz...")
-            
+            messages.success(request, "Başarıyla kayıt oldunuz...")
             return redirect("index")
-        context = {
-            "form": form,
-        }
-        return render(request, "user/register.html", context)
+        except IntegrityError:
+
+            messages.info(request, "Bu kullanıcı adı zaten alınmış.")
+    
+    context = {
+        "form": form,
+    }
+    return render(request, "user/register.html", context)
 
 def loginUser(request):
     form = LoginForm(request.POST or None)
