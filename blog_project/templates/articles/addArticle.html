@@ -9,6 +9,7 @@
         <hr>
         <form method="post" class="form">
         {% csrf_token %}
+        {{form.media}}
         {{form|crispy}}
         <button type="submit" class="register-form-button">Makale Oluştur</button>
         </form>

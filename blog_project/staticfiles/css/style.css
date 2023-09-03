@@ -1,0 +1,115 @@
+.jumbotron {
+    margin-top: 200px !important;
+    border-radius: 40px !important;
+    -webkit-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+}
+
+.navbar {
+    background-color: #404040 !important;
+    margin-bottom: 60px !important;
+}
+
+a {
+    color: #fff !important;
+}
+
+li {
+    margin-left: 15px;
+}
+
+.about-text {
+    margin-top: 70px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.index-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.index-text-1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.about-link {
+    color: #3284ff !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.about-text-1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.register-form-button {
+    background-color: #1b5ab9;
+    color: #fff;
+    border-width: 0px;
+    border-style: solid;
+    width: 130px;
+    padding: 7px;
+    border-radius: 30px;
+    -webkit-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    box-shadow: -1px 9px 34px 3px rgba(0,0,0,0.29);
+    transition: 0.4s;
+    cursor: pointer;
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+.register-form-button:hover {
+    background-color: #1d5ec0;
+    opacity: 0.9;
+    scale: 1.1;
+}
+
+.messages {
+    margin-top: 80px !important;
+    margin-bottom: -50px !important;
+}
+
+.nav-link {
+    transition: 0.4s;
+    border-radius: 40px;
+}
+
+.nav-link:hover {
+    scale: 1.1;
+}
+
+.username-navbar {
+    color: #fff !important;
+    cursor: pointer;
+    margin-top: 7px;
+    margin-bottom: -20px;
+}
+
+.dashboard-button {
+    border-radius: 40px !important;
+    background-color: #1b5ab9 !important;
+    transition: 0.4s !important;
+}
+
+.dashboard-button:hover {
+    background-color: #1d5ec0;
+    opacity: 0.9;
+    scale: 1.1;
+}
+
+.dashboard-button-delete {
+    border-radius: 40px !important;;
+    transition: 0.4s !important;
+    width: 50px;
+}
+
+.dashboard-button-delete:hover {
+    opacity: 0.9;
+    scale: 1.1;
+}
