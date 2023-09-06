@@ -128,8 +128,26 @@ li {
     background-color: #18b3b3;
 }
 
-
-.footer-text {
-    margin-top: 300px;
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
     text-align: center;
+    position: static;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%; 
+}
+
+/* Telif hakkı bildirimini özelleştir */
+footer p {
+    margin: 0; /* Düzenlemeyi sıfırla */
+    font-size: 14px; /* Yazı tipi boyutu */
+}
+
+/* Footer'ın alt kısmını düzenle */
+footer-bottom {
+    font-size: 12px; /* Alt metin yazı tipi boyutu */
+    margin-top: 10px; /* Üst boşluk */
 }
