@@ -8,6 +8,7 @@
             <!-- Post header-->
 
                 <!-- Post title-->
+                <br>
                 <h1 class="fw-bolder mb-1">{{article.title}}</h1>
                 <br>
                 <div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div>
@@ -24,12 +25,11 @@
             <!-- Post content-->
                 <hr>
                 <p class="lead">
-                    {{article.description}}
+                    {{article.description|safe}}
                 </p>
                 <hr>
+
     </div>
     </div>
-</div>
-</div>
 {% endblock body %}
     

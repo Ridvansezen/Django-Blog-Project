@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <h3>Makaleler</h3>
+    <hr>
+    
+    <br>
+    {% if articles %}
+        
+        {% for article in articles %}
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                    <!-- Post header-->
+        
+                        <!-- Post title-->
+                        <a href="{% url 'article:detailArticle' article.id %}" class="about-link-title"><h1 class="fw-bolder mb-1">{{article.title}}</h1></a>
+                        <br>
+                        <div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div>
+                        <br>
+                        <!-- Post meta content-->
+                        <div class="text-muted fst-italic mb-2">Oluşturulma tarihi : {{article.created_date}}</div>
+        
+                        
+                        <p>{{ article.short_description|safe }}...</p>
+                        <a href="{% url 'article:detailArticle' article.id %}" class="about-link ">Daha fazla</a>
+                        <hr>
+                        <br>
+            </div>
+            </div>
+        {% endfor %}
+            
+        
+    {% else %}
+        <div class="alert alert-danger">
+            Henüz bir makale bulunmuyor
+        </div>
+    {% endif %}
+        
+{% endblock body %}
+    

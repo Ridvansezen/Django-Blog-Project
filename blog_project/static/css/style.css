@@ -40,6 +40,10 @@ li {
     color: #3284ff !important;
 }
 
+.about-link-title {
+    color: #202020 !important;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 .about-text-1 {
     font-family: 'Montserrat', sans-serif;
