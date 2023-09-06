@@ -15,8 +15,12 @@ def index(request):
 def about(request):
     return render(request, "about.html")
 
-@login_required(login_url="user:loginUser")
+
 def dashboard(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
+        return redirect("user:loginUser")
+    
     articles = Article.objects.filter(author = request.user)
     context = {
         "articles":articles,
@@ -24,8 +28,12 @@ def dashboard(request):
 
     return render(request, "articles/dashboard.html", context)
 
-@login_required(login_url="user:loginUser")
+
 def addArticle(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
+        return redirect("user:loginUser")
+    
     form = ArticleForm(request.POST or None,request.FILES or None)
 
     if form.is_valid():
@@ -41,8 +49,11 @@ def detailArticle(request, id):
     article = get_object_or_404(Article, id = id)
     return render(request, "articles/detailArticle.html", {"article":article})
 
-@login_required(login_url="user:loginUser")
+
 def updateArticle(request,id):
+    if not request.user.is_authenticated:
+        messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
+        return redirect("user:loginUser")
 
     article = get_object_or_404(Article, id=id)
     form = ArticleForm(request.POST or None, request.FILES or None, instance=article)
@@ -55,8 +66,12 @@ def updateArticle(request,id):
 
     return render(request, "articles/updateArticle.html", {"form":form})
 
-@login_required(login_url="user:loginUser")
+
 def deleteArticle(request,id):
+    if not request.user.is_authenticated:
+        messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
+        return redirect("user:loginUser")
+    
     article = get_object_or_404(Article, id = id)
     article.delete()
     messages.success(request, "Makale başarıyla silindi")
