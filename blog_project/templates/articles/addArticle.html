@@ -7,7 +7,7 @@
     <div class="col-md-6 offset-md-3">          
         <h3 class="about-text">Makale Oluştur</h3>
         <hr>
-        <form method="post" class="form">
+        <form method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.media}}
         {{form|crispy}}

@@ -6,5 +6,7 @@ class Article(models.Model):
     title = models.CharField(max_length= 50, verbose_name="Başlık")
     description = RichTextField(max_length=500, verbose_name="Açıklama")
     created_date = models.DateTimeField(auto_now_add=True, verbose_name="Oluşturulma tarihi")
+    article_image = models.FileField(blank = True,null = True,verbose_name="Dosya Ekle")
+    
     def __str__(self):
         return self.title
