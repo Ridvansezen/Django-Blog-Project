@@ -113,3 +113,19 @@ li {
     opacity: 0.9;
     scale: 1.1;
 }
+
+.detail-img {
+    height: 500px !important;
+}
+
+.update-button {
+    margin-left: 190px !important;
+    width: 150px !important;
+    background-color: #18b3b3;
+}
+
+
+.footer-text {
+    margin-top: 300px;
+    text-align: center;
+}
