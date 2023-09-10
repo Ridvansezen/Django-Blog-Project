@@ -27,9 +27,57 @@
                 <p class="lead">
                     {{article.description|safe}}
                 </p>
-                <hr>
 
+    
+    <hr>
+    
+    <h3>Yorumlar</h3>
+    <hr>
+    <br>
+    {% if comments %}
+    
+    {% for comment in comments %}
+    <div class="media mb-4">
+        <div class="media-body">
+            <br>
+          <h5 class="mt-50">{{ comment.comment_author.username}}</h5>
+          <hr>
+          Yazıldığı tarih : {{comment.comment_date}} <br>
+          <hr>
+          {{comment.comment_description}}
+        </div>
+      </div>
+    {% endfor %}
+        
+    
+
+    {% else %}
+        <div class="alert alert-danger">
+            Bu makalede henüz bir yorum bulunmuyor, İlk yorum yapan siz olun.
+        </div>
+    {% endif %}
+        
+    <div class="card my-4 container">
+        <h5 class="card-header">Yorum Ekle:</h5>
+        <div class="card-body">
+            <form action="{% url 'article:addComment' article.id %}" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <p>Kullanıcı: {{ request.user.username }}</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Yorum</label>
+                    <textarea name="comment_description" class="form-control" rows="3"></textarea>
+                </div>
+            <button type="submit" class="btn btn-primary my-3 comment-button">Ekle</button>
+          </form>
+        </div>
     </div>
     </div>
+</div>
+    
+
 {% endblock body %}
     

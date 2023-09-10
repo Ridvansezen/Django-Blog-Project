@@ -6,14 +6,25 @@
     <hr>
     
     <br>
-    {% if articles %}
-        
-        {% for article in articles %}
-        <div class="row">
+    <div class ="row">
+        <div class="col-md-10 offset-md-3">
             <div class="col-lg-8">
-                <!-- Post content-->
-                    <!-- Post header-->
-        
+                <form>
+                     {% csrf_token %} 
+                    <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Ara...">
+                  <button type="submit" class="btn btn-success">Ara</button>
+                </form>
+          </div>
+        </div>
+    
+    </div>
+    {% if articles %}
+    <div class="article-list">
+        {% for article in articles %}
+        <div class="article">
+        <div class="row">
+
+            <div class="col-lg-8">        
                         <!-- Post title-->
                         <a href="{% url 'article:detailArticle' article.id %}" class="about-link-title"><h1 class="fw-bolder mb-1">{{article.title}}</h1></a>
                         <br>
@@ -24,19 +35,22 @@
         
                         
                         <p>{{ article.short_description|safe }}...</p>
-                        <a href="{% url 'article:detailArticle' article.id %}" class="about-link ">Daha fazla</a>
+                        <a href="{% url 'article:detailArticle' article.id %}" class="about-link ">Daha fazla oku</a>
                         <hr>
                         <br>
             </div>
             </div>
+        </div>
+
+            
         {% endfor %}
             
-        
+    </div>
     {% else %}
-        <div class="alert alert-danger">
-            Henüz bir makale bulunmuyor
+        <div style="margin-top: 200px;" class="alert alert-danger">
+            Makale bulunamadı
         </div>
     {% endif %}
-        
+
 {% endblock body %}
     

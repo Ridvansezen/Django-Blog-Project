@@ -13,3 +13,18 @@ class Article(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ["created_date"]
+    
+class Comment(models.Model):
+    article = models.ForeignKey(Article,on_delete=models.CASCADE,verbose_name="Makale",related_name="comments")
+    comment_author = models.ForeignKey("auth.User", on_delete=models.CASCADE, verbose_name="Kullanıcı")
+    comment_description = models.CharField(max_length=500,verbose_name="Yorum")
+    comment_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.comment_description
+    
+    class Meta:
+        ordering = ["comment_date"]

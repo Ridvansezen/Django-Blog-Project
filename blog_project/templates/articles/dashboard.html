@@ -13,7 +13,7 @@
         
     
         
-    <table class="table">
+    <table style="margin-bottom: 150px;" class="table">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -33,7 +33,19 @@
                     <td>{{article.author.username}}</td>
                     <td>{{article.created_date}}</td>
                     <td><a href="/articles/update/{{article.id}}" class="btn btn-info dashboard-button">Güncelle</a></td>
-                    <td><a href="/articles/delete/{{article.id}}" class="btn btn-danger dashboard-button-delete">Sil</a></td>
+                    <td><a href="#" class="btn btn-danger dashboard-button-delete" onclick="confirmDelete('{{ article.id }}')">Sil</a></td>
+                    <script>
+                        function confirmDelete(articleId) {
+                            if (confirm("Makaleyi silmek istediğinize emin misiniz?")) {
+                                
+                                window.location.href = '/articles/delete/' + articleId;
+                            } else {
+                                
+                                return false;
+                            }
+                        }
+                        </script>
+
                 </tr>
             {% endfor %}
         </tbody>

@@ -131,23 +131,45 @@ li {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    left: 0;
+    text-align: center;
+    position: absolute;
+    margin-top: 300px;
+    bottom: 100;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+
+footer p {
+    margin: 0; 
+    font-size: 14px; 
+    margin-top: 30px;
+}
+
+.footer-socialmedia {
     text-align: center;
     position: static;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%; 
+    margin-top: 50px;
 }
 
-/* Telif hakkı bildirimini özelleştir */
-footer p {
-    margin: 0; /* Düzenlemeyi sıfırla */
-    font-size: 14px; /* Yazı tipi boyutu */
+.footer-socialmedia a {
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-left: 10px;
+
 }
 
-/* Footer'ın alt kısmını düzenle */
-footer-bottom {
-    font-size: 12px; /* Alt metin yazı tipi boyutu */
-    margin-top: 10px; /* Üst boşluk */
+.input-sm {
+    padding: 4px;
+    width: 200px;
+    margin-bottom: 50px ;
+    border-radius: 20px !important;
+    border: 2px solid #18b35e;
+}
+
+.comment-button {
+    margin-left: 450px;
+    width: 150px;
+    border-radius: 40px;
 }
