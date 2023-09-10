@@ -40,7 +40,7 @@
     <div class="media mb-4">
         <div class="media-body">
             <br>
-          <h5 class="mt-50">{{ comment.comment_author.username}}</h5>
+          <a class="username-link" href="{% url 'user:profile' %}"><h5 class="mt-50">{{ comment.comment_author.username}}</h5></a>
           <hr>
           Yazıldığı tarih : {{comment.comment_date}} <br>
           <hr>

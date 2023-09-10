@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div style="margin-bottom: 250px;" class="container mt-5">
+    <h2>Profil Sayfası</h2>
+    <br> <hr>
+    <p>Kullanıcı Adı: {{ user.username }}</p>
+    <p>Kayıt Tarihi: {{ registration_date }}</p>
+</div >
+{% endblock body %}
+    

@@ -91,8 +91,13 @@ li {
 .username-navbar {
     color: #fff !important;
     cursor: pointer;
-    margin-top: 7px;
-    margin-bottom: -20px;
+    text-decoration: none;
+}
+
+.username-navbar:hover {
+    color: #fff !important;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .dashboard-button {
@@ -172,4 +177,22 @@ footer p {
     margin-left: 450px;
     width: 150px;
     border-radius: 40px;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    background-color: #333;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #474747;
+}
+
+.username-link {
+    color:#333 !important;
+    text-decoration: none;
 }

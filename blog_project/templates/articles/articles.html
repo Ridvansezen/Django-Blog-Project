@@ -28,7 +28,7 @@
                         <!-- Post title-->
                         <a href="{% url 'article:detailArticle' article.id %}" class="about-link-title"><h1 class="fw-bolder mb-1">{{article.title}}</h1></a>
                         <br>
-                        <div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div>
+                        <a href="{% url 'user:profile' %}"><div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div></a>
                         <br>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Oluşturulma tarihi : {{article.created_date}}</div>

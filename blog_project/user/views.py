@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.db import IntegrityError
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 def registerUser(request):
     form = RegisterForm(request.POST or None)
@@ -54,3 +58,30 @@ def logoutUser(request):
     logout(request)
     messages.success(request, "Başarıyla çıkış yaptınız...")
     return redirect("index")
+
+def profileUser(request):
+    user = request.user
+    registration_date = user.date_joined  # Kullanıcının kayıt olduğu tarih
+
+    context = {
+        'user': user,
+        'registration_date': registration_date,
+    }
+
+    return render(request, 'user/profile.html', context)
+
+def settingsUser(request):
+    if request.method == 'POST':
+        user_change_form = UserChangeForm(request.POST, instance=request.user)
+        if user_change_form.is_valid():
+            user_change_form.save()
+            messages.success(request, "Başarıyla çıkış yaptınız...")
+            return redirect('index')
+    else:
+        user_change_form = UserChangeForm(instance=request.user)
+
+    context = {
+        'user_change_form': user_change_form,
+    }
+
+    return render(request, 'user/settings.html', context)

@@ -34,9 +34,17 @@
     
     <ul class="navbar-nav ml-auto">
       {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <p class="username-navbar">Giriş yapıldı : {{user.username}}</p>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle username-navbar" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Giriş yapıldı: {{ user.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{% url 'user:profile' %}">Profil</a>
+            <a class="dropdown-item" href="{% url 'user:settings' %}">Ayarlar</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'user:logoutUser' %}">Çıkış Yap</a>
+        </div>
+    </li>
       {% else %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'user:loginUser' %}">Giriş Yap</a>
@@ -46,12 +54,6 @@
       </li>
       {% endif %}
       
-      {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'user:logoutUser' %}">Çıkış Yap</a>
-        </li>
-      {% else %}
-      {% endif %}
       
     </ul>
 
