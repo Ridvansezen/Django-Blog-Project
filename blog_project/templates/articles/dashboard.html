@@ -13,10 +13,9 @@
         
     
         
-    <table style="margin-bottom: 150px;" class="table">
+    <table style="margin-bottom: 300px;" class="table">
         <thead>
           <tr>
-            <th scope="col">id</th>
             <th scope="col">Başlık</th>
             <th scope="col">Yazar</th>
             <th scope="col">Oluşturulma tarihi</th>
@@ -28,7 +27,6 @@
             
             {% for article in articles %}
                 <tr>
-                    <th scope="row">{{article.id}}</th>
                     <td><a href="/articles/article/{{article.id}}" class="about-link">{{article.title}}</a></td>
                     <td>{{article.author.username}}</td>
                     <td>{{article.created_date}}</td>
@@ -51,7 +49,7 @@
         </tbody>
       </table>
       {% else %}
-            <div class="alert alert-danger">
+            <div style="margin-bottom: 200px;" class="alert alert-danger">
                 Henüz bir makaleniz bulunmuyor... 
             </div>
     {% endif %}

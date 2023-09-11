@@ -36,11 +36,17 @@
       {% if request.user.is_authenticated %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle username-navbar" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Giriş yapıldı: {{ user.username }}
+          
+          {% if user.username == "ridvan" %}
+          Giriş yapıldı: {{ user.username }} <p style="color: red; display: inline;">(Admin)</p>
+          {% else %}
+          Giriş yapıldı: {{ user.username }}
+          {% endif %}
+             
+          
         </a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="{% url 'user:profile' %}">Profil</a>
-            <a class="dropdown-item" href="{% url 'user:settings' %}">Ayarlar</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'user:logoutUser' %}">Çıkış Yap</a>
         </div>
