@@ -134,9 +134,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = "/home/Django-Blog-Project/blog_project/staticfiles/"
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-     '/home/Django-Blog-Project/blog_project/staticfiles/',
-)
 
 MEDIA_ROOT = '/home/Django-Blog-Project/blog_project/media/'
 MEDIA_URL = '/media/'
