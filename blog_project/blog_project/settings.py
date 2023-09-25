@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w5(v)jkq+x0b(@ju=1!%thd7zt8&e#hdb*lte)@2gvh40j8jl%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.71.77.198']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -131,8 +131,9 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/home/Django-Blog-Project/blog_project/staticfiles/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 MEDIA_ROOT = '/home/Django-Blog-Project/blog_project/media/'
