@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<div style="margin-bottom: 300px;" class="container">
+    <h2>Ayarlar</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ user_change_form.username.label_tag }}
+        {{ user_change_form.username }}
+        <button class="btn btn-primary" type="submit">Değiştir</button>
+    </form>
+</div>
+{% endblock body %}

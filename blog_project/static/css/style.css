@@ -174,7 +174,7 @@ footer p {
 }
 
 .comment-button {
-    justify-content: center;
+    margin-left: 450px;
     width: 150px;
     border-radius: 40px;
 }

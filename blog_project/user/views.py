@@ -69,3 +69,19 @@ def profileUser(request):
     }
 
     return render(request, 'user/profile.html', context)
+
+def settingsUser(request):
+    if request.method == 'POST':
+        user_change_form = UserChangeForm(request.POST, instance=request.user)
+        if user_change_form.is_valid():
+            user_change_form.save()
+            messages.success(request, "Başarıyla çıkış yaptınız...")
+            return redirect('index')
+    else:
+        user_change_form = UserChangeForm(instance=request.user)
+
+    context = {
+        'user_change_form': user_change_form,
+    }
+
+    return render(request, 'user/settings.html', context)
