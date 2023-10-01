@@ -11,15 +11,7 @@
                 <br>
                 <h1 class="fw-bolder mb-1">{{article.title}}</h1>
                 <br>
-                
-                
-                {% if article.author.username == "ridvan" %}
-                <div style="display: inline;" class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}<p style="color: red; display: inline;">  (Admin)</p></div>
-                <br>
-                {% else %}
                 <div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div>
-                {% endif %}
-                    
                 <br>
                 <!-- Post meta content-->
                 <div class="text-muted fst-italic mb-2">Oluşturulma tarihi : {{article.created_date}}</div>
@@ -36,28 +28,21 @@
                     {{article.description|safe}}
                 </p>
 
-    <br>
-    <br>
+    
     <hr>
     
     <h3>Yorumlar</h3>
     <hr>
+    <br>
     {% if comments %}
     
     {% for comment in comments %}
     <div class="media mb-4">
         <div class="media-body">
             <br>
-            
-            {% if comment.comment_author.username == "ridvan" %}
-            <p class="username-link"><h5 class="mt-50">{{ comment.comment_author.username}} <p style="color: red; display: inline;">(Admin)</p> </h5></p>
-            {% else %}
-            <p class="username-link"><h5 class="mt-50">{{ comment.comment_author.username}}</h5></p>
-            {% endif %}
-                
-          
+          <a class="username-link" href="{% url 'user:profile' %}"><h5 class="mt-50">{{ comment.comment_author.username}}</h5></a>
           <hr>
-          <p style="font-size: 13px;">Yazıldığı tarih : {{comment.comment_date}}</p> 
+          Yazıldığı tarih : {{comment.comment_date}} <br>
           <hr>
           {{comment.comment_description}}
         </div>

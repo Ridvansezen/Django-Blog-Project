@@ -23,13 +23,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w5(v)jkq+x0b(@ju=1!%thd7zt8&e#hdb*lte)@2gvh40j8jl%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['3.71.77.198']
+ALLOWED_HOSTS = ['*']
 
+from django.views.defaults import permission_denied
+
+handler403 = permission_denied
 
 
 # Application definition
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_RATES': {
+        'login': '5/5minute',  # Giriş throttling oranı
+        'register': '5/10minute',  # Kayıt throttling oranı
+        'user':'5/minute',
+    },
+}
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'ckeditor',
     'django_cleanup',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -131,12 +144,9 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/home/Django-Blog-Project/blog_project/staticfiles/"
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATICFILES_DIRS = (
-     '/home/Django-Blog-Project/blog_project/staticfiles/',
-)
 
 MEDIA_ROOT = '/home/Django-Blog-Project/blog_project/media/'
 MEDIA_URL = '/media/'
@@ -155,6 +165,7 @@ CKEDITOR_CONFIGS = {
         "allowedContent": True
     }
 }
+
 
 
 
