@@ -145,6 +145,10 @@ STATICFILES_FINDERS = (
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+<<<<<<< HEAD
+=======
+STATIC_URL = '/static/'
+>>>>>>> b058a6dd174743bcc90dd28d3dd966c6be685137
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
