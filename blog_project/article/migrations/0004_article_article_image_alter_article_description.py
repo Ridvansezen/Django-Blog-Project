@@ -5,20 +5,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('article', '0003_rename_content_article_description'),
+        ("article", "0003_rename_content_article_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='article',
-            name='article_image',
-            field=models.FileField(blank=True, null=True, upload_to='', verbose_name='Dosya Ekle'),
+            model_name="article",
+            name="article_image",
+            field=models.FileField(
+                blank=True, null=True, upload_to="", verbose_name="Dosya Ekle"
+            ),
         ),
         migrations.AlterField(
-            model_name='article',
-            name='description',
-            field=ckeditor.fields.RichTextField(max_length=500, verbose_name='Açıklama'),
+            model_name="article",
+            name="description",
+            field=ckeditor.fields.RichTextField(
+                max_length=500, verbose_name="Açıklama"
+            ),
         ),
     ]
