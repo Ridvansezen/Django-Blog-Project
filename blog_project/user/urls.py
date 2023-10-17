@@ -12,9 +12,4 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logoutUser"),
     path('profile/', views.profileUser, name="profile"),
     path('settings/', views.settingsUser, name="settings"),
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> b058a6dd174743bcc90dd28d3dd966c6be685137
 ]
