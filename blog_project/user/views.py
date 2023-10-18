@@ -10,13 +10,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django_ratelimit.decorators import ratelimit
 from django_ratelimit.exceptions import Ratelimited
 
-from .forms import LoginForm, RegisterForm
+from .forms import login_form, register_form
 
 
 @ratelimit(key="user", rate="5/10minute", method="POST", block=True)
 @csrf_exempt
-def registerUser(request):
-    form = RegisterForm(request.POST or None)
+def register_user(request):
+    form = register_form(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
@@ -39,8 +39,8 @@ def registerUser(request):
 
 @ratelimit(key="user", rate="5/5minute", method="POST", block=True)
 @csrf_exempt
-def loginUser(request):
-    form = LoginForm(request.POST or None)
+def login_user(request):
+    form = login_form(request.POST or None)
     context = {"form": form}
 
     if form.is_valid():
@@ -63,13 +63,13 @@ def handler403(request, exception):
     return render(request, "403.html", {})
 
 
-def logoutUser(request):
+def logout_user(request):
     logout(request)
     messages.success(request, "Başarıyla çıkış yaptınız...")
     return redirect("index")
 
 
-def profileUser(request):
+def profile_user(request):
     user = request.user
     registration_date = user.date_joined  # Kullanıcının kayıt olduğu tarih
 
@@ -81,7 +81,7 @@ def profileUser(request):
     return render(request, "user/profile.html", context)
 
 
-def settingsUser(request):
+def settings_user(request):
     if request.method == "POST":
         user_change_form = UserChangeForm(request.POST, instance=request.user)
         if user_change_form.is_valid():

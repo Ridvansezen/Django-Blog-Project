@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .forms import ArticleForm, CommentForm
+from .forms import article_form, comment_form
 from .models import Article, Comment
 
 # from django.contrib.auth.decorators import login_required
@@ -43,12 +43,12 @@ def dashboard(request):
     return render(request, "articles/dashboard.html", context)
 
 
-def addArticle(request):
+def add_article(request):
     if not request.user.is_authenticated:
         messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
         return redirect("user:loginUser")
 
-    form = ArticleForm(request.POST or None, request.FILES or None)
+    form = article_form(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         article = form.save(commit=False)
@@ -60,7 +60,7 @@ def addArticle(request):
     return render(request, "articles/addArticle.html", {"form": form})
 
 
-def detailArticle(request, id):
+def detail_article(request, id):
     article = get_object_or_404(Article, id=id)
     comments = article.comments.all()
     return render(
@@ -70,13 +70,13 @@ def detailArticle(request, id):
     )
 
 
-def updateArticle(request, id):
+def update_article(request, id):
     if not request.user.is_authenticated:
         messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
         return redirect("user:loginUser")
 
     article = get_object_or_404(Article, id=id)
-    form = ArticleForm(request.POST or None, request.FILES or None, instance=article)
+    form = article_form(request.POST or None, request.FILES or None, instance=article)
     if form.is_valid():
         article = form.save(commit=False)
         article.author = request.user
@@ -87,7 +87,7 @@ def updateArticle(request, id):
     return render(request, "articles/updateArticle.html", {"form": form})
 
 
-def deleteArticle(request, id):
+def delete_article(request, id):
     if not request.user.is_authenticated:
         messages.info(request, "Bu sayfaya erişmek için giriş yapmalısınız.")
         return redirect("user:loginUser")
@@ -98,7 +98,7 @@ def deleteArticle(request, id):
     return redirect("article:dashboard")
 
 
-def addComment(request, id):
+def add_comment(request, id):
     article = get_object_or_404(Article, id=id)
 
     if request.method == "POST":
@@ -106,7 +106,7 @@ def addComment(request, id):
             messages.info(request, "Yorum yapabilmek için giriş yapmalısınız.")
             return redirect("user:loginUser")
 
-        form = CommentForm(request.POST or None)
+        form = comment_form(request.POST or None)
 
         if form.is_valid():
             new_comment = form.save(commit=False)
@@ -115,6 +115,6 @@ def addComment(request, id):
             new_comment.save()
             return redirect(reverse("article:detailArticle", kwargs={"id": id}))
     else:
-        form = CommentForm()
+        form = comment_form()
 
     return render(request, "index.html", {"form": form})
