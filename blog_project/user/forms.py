@@ -2,6 +2,13 @@ from django import forms
 
 
 class LoginForm(forms.Form):
+    username = forms.CharField(min_length=4,max_length=18,label="Kullanıcı adı")
+    password = forms.CharField(min_length=6,max_length = 18,label="Parola",widget=forms.PasswordInput)
+
+class RegisterForm(forms.Form):
+    username = forms.CharField(min_length=4,max_length=18, label = "Kullanıcı adı")  # Min & Max lengths applied to forms
+    password = forms.CharField(min_length=6,max_length = 18, label= "Parola" , widget=forms.PasswordInput) # Min & Max lengths applied to forms
+    confirm_password = forms.CharField(min_length=6,max_length=18, label="Parolayı doğrulayın", widget=forms.PasswordInput) # Min & Max lengths applied to forms
     username = forms.CharField(label="Kullanıcı adı")
     password = forms.CharField(label="Parola", widget=forms.PasswordInput)
 
