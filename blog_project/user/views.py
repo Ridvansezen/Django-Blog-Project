@@ -1,21 +1,19 @@
-from django.shortcuts import render,redirect
-from .forms import RegisterForm, LoginForm
-from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
-from django.db import IntegrityError
-from django.shortcuts import render, redirect
+from django.contrib.auth import (authenticate, login, logout,
+                                 update_session_auth_hash)
 from django.contrib.auth.forms import UserChangeForm
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django_ratelimit.decorators import ratelimit
-from django.http import HttpResponse
 from django_ratelimit.exceptions import Ratelimited
 
+from .forms import LoginForm, RegisterForm
 
 
-@ratelimit(key='user', rate='5/10minute', method='POST', block=True)
+@ratelimit(key="user", rate="5/10minute", method="POST", block=True)
 @csrf_exempt
 def registerUser(request):
     form = RegisterForm(request.POST or None)
@@ -24,7 +22,6 @@ def registerUser(request):
         password = form.cleaned_data.get("password")
 
         try:
-
             newUser = User(username=username)
             newUser.set_password(password)
             newUser.save()
@@ -32,21 +29,19 @@ def registerUser(request):
             messages.success(request, "Başarıyla kayıt oldunuz...")
             return redirect("index")
         except IntegrityError:
-
             messages.info(request, "Bu kullanıcı adı zaten alınmış.")
-    
+
     context = {
         "form": form,
     }
     return render(request, "user/register.html", context)
 
-@ratelimit(key='user', rate='5/5minute', method='POST', block=True)
+
+@ratelimit(key="user", rate="5/5minute", method="POST", block=True)
 @csrf_exempt
 def loginUser(request):
     form = LoginForm(request.POST or None)
-    context = {
-        "form": form
-    }
+    context = {"form": form}
 
     if form.is_valid():
         username = form.cleaned_data.get("username")
@@ -63,38 +58,41 @@ def loginUser(request):
 
     return render(request, "user/login.html", context)
 
+
 def handler403(request, exception):
-    return render(request, '403.html', {})
-    
+    return render(request, "403.html", {})
+
 
 def logoutUser(request):
     logout(request)
     messages.success(request, "Başarıyla çıkış yaptınız...")
     return redirect("index")
 
+
 def profileUser(request):
     user = request.user
     registration_date = user.date_joined  # Kullanıcının kayıt olduğu tarih
 
     context = {
-        'user': user,
-        'registration_date': registration_date,
+        "user": user,
+        "registration_date": registration_date,
     }
 
-    return render(request, 'user/profile.html', context)
+    return render(request, "user/profile.html", context)
+
 
 def settingsUser(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         user_change_form = UserChangeForm(request.POST, instance=request.user)
         if user_change_form.is_valid():
             user_change_form.save()
             messages.success(request, "Başarıyla çıkış yaptınız...")
-            return redirect('index')
+            return redirect("index")
     else:
         user_change_form = UserChangeForm(instance=request.user)
 
     context = {
-        'user_change_form': user_change_form,
+        "user_change_form": user_change_form,
     }
 
-    return render(request, 'user/settings.html', context)
+    return render(request, "user/settings.html", context)
