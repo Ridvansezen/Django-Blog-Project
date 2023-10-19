@@ -6,7 +6,7 @@ app_name = "user"
 
 handler403 = "user.views.handler403"
 
-# User (Kullanıcı) ile ilgili url'leri burada tanımlıyoruz.
+# We define User related urls here.
 urlpatterns = [
     path('register/', views.register_user, name="registerUser"),
     path('login/', views.login_user, name="loginUser"),

@@ -7,7 +7,7 @@ from . import views
 
 app_name = "article"
 
-# Article ile ilgili url'leri burada tanımlıyoruz.
+# Here we define the urls related to the article.
 urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path("addarticle/", views.add_article, name="addArticle"),
