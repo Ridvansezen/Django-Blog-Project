@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-w5(v)jkq+x0b(@ju=1!%thd7zt8&e#hdb*lte)@2gvh40j8jl%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -145,22 +145,13 @@ STATICFILES_FINDERS = (
 STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-
-MEDIA_ROOT = "/home/Django-Blog-Project/blog_project/media/"
-MEDIA_URL = "/media/"
-=======
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_ROOT = '/home/Django-Blog-Project/blog_project/media/'
 MEDIA_URL = '/media/'
->>>>>>> ea1a4508c6b688701585f6e2c18f23d0fb2a72f2
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
