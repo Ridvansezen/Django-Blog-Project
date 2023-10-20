@@ -5,7 +5,7 @@ from django.urls import include, path
 
 from article import views
 
-# Ana url'lerimizi burada tanımlıyoruz.
+# Here we define the main URLs.
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
