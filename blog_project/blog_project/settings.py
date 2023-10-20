@@ -23,13 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-w5(v)jkq+x0b(@ju=1!%thd7zt8&e#hdb*lte)@2gvh40j8jl%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 ALLOWED_HOSTS = ["*"]
 
 from django.views.defaults import permission_denied
 
 handler403 = permission_denied
+handler404 = permission_denied
 
 
 # Application definition
