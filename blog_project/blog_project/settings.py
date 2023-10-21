@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 from django.views.defaults import permission_denied
 
 handler403 = permission_denied
-
+handler404 = permission_denied
 
 
 # Application definition
