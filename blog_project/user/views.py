@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import (authenticate, login, logout,
+from django.contrib.auth import (authenticate, login, logout,\
                                  update_session_auth_hash)
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
@@ -9,14 +9,14 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django_ratelimit.decorators import ratelimit
 from django_ratelimit.exceptions import Ratelimited
+from .forms import login_form, register_form
 
-from .forms import LoginForm, RegisterForm
 
-
-@ratelimit(key="user", rate="5/10minute", method="POST", block=True)
+@ratelimit(key="user", rate="5/10minute", method="POST", block=True) # This decorator adds throttling to the register form.
 @csrf_exempt
-def registerUser(request):
-    form = RegisterForm(request.POST or None)
+# This function registers the user in the database. And the user is registered.
+def register_user(request):
+    form = register_form(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
@@ -37,10 +37,11 @@ def registerUser(request):
     return render(request, "user/register.html", context)
 
 
-@ratelimit(key="user", rate="5/5minute", method="POST", block=True)
+@ratelimit(key="user", rate="5/5minute", method="POST", block=True) # This decorator adds throttling to the login form.
 @csrf_exempt
-def loginUser(request):
-    form = LoginForm(request.POST or None)
+# This function logins the user.
+def login_user(request):
+    form = login_form(request.POST or None)
     context = {"form": form}
 
     if form.is_valid():
@@ -59,22 +60,29 @@ def loginUser(request):
     return render(request, "user/login.html", context)
 
 
+# This function changes the 403 page.
 def handler403(request, exception):
     return render(request, "403.html", {})
+
 
 def handler404(request, exception):
     return render(request, "404.html", {})
 
 
-def logoutUser(request):
+
+# This function logouts the user.
+def logout_user(request):
+
     logout(request)
     messages.success(request, "Başarıyla çıkış yaptınız...")
     return redirect("index")
 
 
-def profileUser(request):
+# This function shows the clicked user profile page. But it's not working \
+#  properly at the moment.
+def profile_user(request):
     user = request.user
-    registration_date = user.date_joined  # Kullanıcının kayıt olduğu tarih
+    registration_date = user.date_joined
 
     context = {
         "user": user,
@@ -84,7 +92,9 @@ def profileUser(request):
     return render(request, "user/profile.html", context)
 
 
-def settingsUser(request):
+# This function shows settings page. In settings page, you can change your \
+#  username.
+def settings_user(request):
     if request.method == "POST":
         user_change_form = UserChangeForm(request.POST, instance=request.user)
         if user_change_form.is_valid():
