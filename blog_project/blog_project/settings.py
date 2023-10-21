@@ -96,9 +96,13 @@ WSGI_APPLICATION = "blog_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blog_project', 
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
@@ -147,7 +151,6 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
 
 MEDIA_ROOT = '/home/Django-Blog-Project/blog_project/media/'
 MEDIA_URL = '/media/'
