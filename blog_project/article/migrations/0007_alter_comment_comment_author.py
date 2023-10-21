@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('article', '0006_alter_comment_comment_author'),
+        ("article", "0006_alter_comment_comment_author"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='comment_author',
-            field=models.CharField(max_length=50, verbose_name='İsim'),
+            model_name="comment",
+            name="comment_author",
+            field=models.CharField(max_length=50, verbose_name="İsim"),
         ),
     ]
