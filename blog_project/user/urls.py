@@ -6,7 +6,6 @@ from user import views
 app_name = "user"
 
 handler403 = "user.views.handler403"
-handler404 = "user.views.handler404"
 
 # We define User related urls here.
 urlpatterns = [
