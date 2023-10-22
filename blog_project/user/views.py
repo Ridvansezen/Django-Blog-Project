@@ -65,6 +65,10 @@ def handler403(request, exception):
     return render(request, "403.html", {})
 
 
+def handler404(request, exception):
+    return render(request, "404.html", {})
+
+
 
 
 # This function logouts the user.
