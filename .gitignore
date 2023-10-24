@@ -1,1 +1,6 @@
-__pycache__/
+blog_project/user/__pycache__/
+blog_project/blog_project/__pycache__/
+blog_project/article/migrations/__pycache__/
+blog_project/article/__pycache__/
+
+*.pyc
