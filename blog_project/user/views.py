@@ -69,11 +69,8 @@ def handler404(request, exception):
     return render(request, "404.html", {})
 
 
-
-
 # This function logouts the user.
 def logout_user(request):
-
     logout(request)
     messages.success(request, "Başarıyla çıkış yaptınız...")
     return redirect("index")
