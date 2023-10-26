@@ -174,9 +174,17 @@ footer p {
 }
 
 .comment-button {
-    margin-left: 450px;
+    left: 0%;
+    right: 0%;
     width: 150px;
     border-radius: 40px;
+    background-color: #007bff;
+    transition: 0.4s;
+}
+
+.comment-button:hover {
+    background-color: #fff;
+    color: #007bff;
 }
 
 .dropdown-menu {
