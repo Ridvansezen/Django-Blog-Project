@@ -204,3 +204,15 @@ footer p {
     color:#333 !important;
     text-decoration: none;
 }
+
+.admin-text {
+    color: red;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.comment_author {
+    color: #202020;
+    font-weight: 600;
+    font-size: 18px;
+}

@@ -28,7 +28,20 @@
                         <!-- Post title-->
                         <a href="{% url 'article:detailArticle' article.id %}" class="about-link-title"><h1 class="fw-bolder mb-1">{{article.title}}</h1></a>
                         <br>
-                        <a href="{% url 'user:profile' %}"><div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div></a>
+                        
+                        {% if article.author.username == "ridvan" %}
+                            <a href="{% url 'user:profile' %}">
+                                <span class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</span>
+                                <span class="admin-text">(admin)</span>
+                            </a>
+                            <br>
+                        {% else %}
+                            <a href="{% url 'user:profile' %}">
+                                <span class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</span>
+                            </a>
+                            <br>
+                        {% endif %}
+                        
                         <br>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Oluşturulma tarihi : {{article.created_date}}</div>

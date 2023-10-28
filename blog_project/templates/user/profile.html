@@ -5,7 +5,16 @@
 <div style="margin-bottom: 250px;" class="container mt-5">
     <h2>Profil Sayfası</h2>
     <br> <hr>
-    <p>Kullanıcı Adı: {{ user.username }}</p>
+    
+    {% if request.user.username == "ridvan" %}
+        <p>Kullanıcı Adı: {{ request.user.username }}
+            <span class="admin-text">(admin)</span>
+        </p>
+    {% else %}
+        <p>Kullanıcı Adı: {{ request.user.username }}</p>
+    {% endif %}
+        
+    
     <p>Kayıt Tarihi: {{ registration_date }}</p>
 </div >
 {% endblock body %}

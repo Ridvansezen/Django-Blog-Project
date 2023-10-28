@@ -11,7 +11,18 @@
                 <br>
                 <h1 class="fw-bolder mb-1">{{article.title}}</h1>
                 <br>
-                <div class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</div>
+                {% if article.author.username == "ridvan" %}
+                    <a href="{% url 'user:profile' %}">
+                        <span class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</span>
+                        <span class="admin-text">(admin)</span>
+                    </a>
+                    <br>
+                {% else %}
+                    <a href="{% url 'user:profile' %}">
+                        <span class="text-muted fst-italic mb-2">Yazar : {{article.author.username}}</span>
+                    </a>
+                    <br>
+                {% endif %}
                 <br>
                 <!-- Post meta content-->
                 <div class="text-muted fst-italic mb-2">Oluşturulma tarihi : {{article.created_date}}</div>
@@ -29,8 +40,12 @@
                 </p>
 
     
-    <hr>
-    
+
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
     <h3>Yorumlar</h3>
     <hr>
     <br>
@@ -40,13 +55,25 @@
     <div class="media mb-4">
         <div class="media-body">
             <br>
-          <a class="username-link" href="{% url 'user:profile' %}"><h5 class="mt-50">{{ comment.comment_author.username}}</h5></a>
+            {% if article.author.username == "ridvan" %}
+                <p>
+                    <span class="fst-italic mb-2 comment_author">{{ comment.comment_author.username }}</span>
+                    <span class="admin-text">(admin)</span>
+                </p>
+                
+            {% else %}
+                <p>
+                    <div class="fst-italic mb-2 comment_author">{{ comment.comment_author.username}}/div>
+                </p>
+                
+            {% endif %}
           <hr>
           Yazıldığı tarih : {{comment.comment_date}} <br>
           <hr>
           {{comment.comment_description}}
         </div>
       </div>
+      <hr>
     {% endfor %}
         
     
@@ -64,7 +91,16 @@
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <p>Kullanıcı: {{ request.user.username }}</p>
+                    
+                    {% if request.user.username == "ridvan" %}
+                        <p>Kullanıcı: {{ request.user.username }}
+                            <span class="admin-text">(admin)</span>
+                        </p>
+                    {% else %}
+                        <p>Kullanıcı: {{ request.user.username }}</p>
+                    {% endif %}
+                        
+                    
                 </div>
 
                 <div class="form-group">
