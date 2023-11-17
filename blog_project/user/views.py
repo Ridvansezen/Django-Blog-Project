@@ -41,6 +41,7 @@ def register_user(request):
 
 @ratelimit(key="user", rate="5/5minute", method="POST", block=True) # This decorator adds throttling to the login form.
 @csrf_exempt
+@timing_decorator
 # This function logins the user.
 def login_user(request):
     form = login_form(request.POST or None)
