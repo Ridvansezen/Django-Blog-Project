@@ -1,4 +1,4 @@
-class custom_login_middleware():
+class CustomLoginMiddleware():
     def __init__(self,get_response):
         self.get_response = get_response
 
