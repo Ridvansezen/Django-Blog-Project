@@ -10,10 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django_ratelimit.decorators import ratelimit
 from django_ratelimit.exceptions import Ratelimited
 from .forms import login_form, register_form
+from .custom_decorator import timing_decorator
 
 
 @ratelimit(key="user", rate="5/10minute", method="POST", block=True) # This decorator adds throttling to the register form.
 @csrf_exempt
+@timing_decorator
 # This function registers the user in the database. And the user is registered.
 def register_user(request):
     form = register_form(request.POST or None)
@@ -39,6 +41,7 @@ def register_user(request):
 
 @ratelimit(key="user", rate="5/5minute", method="POST", block=True) # This decorator adds throttling to the login form.
 @csrf_exempt
+@timing_decorator
 # This function logins the user.
 def login_user(request):
     form = login_form(request.POST or None)
